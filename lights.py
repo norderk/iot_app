@@ -1,9 +1,10 @@
 import paho.mqtt.client as mqtt
 import time
+import os
 
-MQTT_BROKER_HOST =
-MQTT_BROKER_PORT = 
-MQTT_KEEP_ALIVE_INTERVAL =
+MQTT_BROKER_HOST = str(os.getenv('MQTT_BROKER_HOST'))
+MQTT_BROKER_PORT = int(os.getenv('MQTT_BROKER_PORT'))
+MQTT_KEEP_ALIVE_INTERVAL = int(os.getenv('MQTT_KEEP_ALIVE_INTERVAL'))
 
 def on_connect(client, userdata, flags, rc):
     
