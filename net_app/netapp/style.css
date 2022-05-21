@@ -1,0 +1,38 @@
+#header {
+    border-style: dashed;
+    color: rgb(0, 0, 0);
+}
+
+#body {
+    border-style: dotted;
+    border-color: blue;
+    background-color: black;
+}
+
+#footer {
+    border-style: dashed;
+    color: rgb(0, 0, 0);
+}
+
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgb(228, 218, 218);
+    background-color: rgb(26, 81, 81);
+    transition: 0.3s;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(234, 224, 224, 0.2);
+    background-color: brown;
+    opacity: 50%;
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
