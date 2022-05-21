@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<meta charset="utf-8">
@@ -12,44 +13,66 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 </head>
+
 <body>
 
     <header class="navbar">
-        <a href="#">IOT<span>StartPage</span></a>
+        <a href="#" class="logo">IOT<span>StartPage</span></a>
+
         <nav>
+            <svg class="close" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                <g id="XMLID_28_">
+                <path id="XMLID_29_" d="M165,0C120.926,0,79.492,17.163,48.328,48.327c-64.334,64.333-64.334,169.011-0.002,233.345
+                    C79.49,312.837,120.926,330,165,330c44.072,0,85.508-17.163,116.672-48.328c64.334-64.334,64.334-169.012,0-233.345
+                    C250.508,17.163,209.072,0,165,0z M239.246,239.245c-2.93,2.929-6.768,4.394-10.607,4.394c-3.838,0-7.678-1.465-10.605-4.394
+                    L165,186.213l-53.033,53.033c-2.93,2.929-6.768,4.394-10.607,4.394c-3.838,0-7.678-1.465-10.605-4.394
+                    c-5.859-5.857-5.859-15.355,0-21.213L143.787,165l-53.033-53.033c-5.859-5.857-5.859-15.355,0-21.213
+                    c5.857-5.857,15.355-5.857,21.213,0L165,143.787l53.031-53.033c5.857-5.857,15.355-5.857,21.213,0
+                    c5.859,5.857,5.859,15.355,0,21.213L186.213,165l53.033,53.032C245.104,223.89,245.104,233.388,239.246,239.245z"/>
+            </svg>
+
             <ul>
-                <li>Home</li>
-                <li>User</li>
-                <li>Docs</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">User</a></li>
+                <li><a href="#">Docs</a></li>
             </ul>
-            <div class="hamburger"></div>
         </nav>
+
+        <svg class="hamburger" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100">
+            <rect width="44" height="10" x="30" y="63" fill="#ff8405"/>
+            <rect width="44" height="10" x="30" y="31" fill="#ff8405"/>
+            <rect width="44" height="10" x="30" y="47" fill="#ff8405" transform="rotate(-180 52 52)"/>
+            <rect width="6" height="49" x="46.5" y="19.5" fill="#3fa9f5" transform="rotate(-90 49.5 44)"/>
+            <polygon fill="#4343bf" points="74,25 74,41 30,41 30,47 74,47 74,57 30,57 30,63 74,63 74,73 30,73 30,79 80,79 80,25"/>
+            <polygon fill="#3abcf8" points="74,21 20,21 20,76 30,76 30,31 74,31"/>
+        </svg>
+
     </header>
 
     <div class="hero-img"></div>
 
     <section class="hero">    
         <h1>Welcome Home!</h1>
+
         <div class="cards">
 
             <div class="card">
-                <img src="weather.png" alt="Avatar" style="display:block;margin:auto;max-height:70%;max-width:70%;">
-                <div class="container">
+                <div class="img_sun"></div>
                   <h4><b>WEATHER</b></h4>
                 </div>
             </div>
 
             <div class="card">
-                <img src="light.jpg" alt="Avatar" style="display:block;margin:auto;max-height:70%;max-width:70%;">
-                <div class="container">
-                  <h4><b>LIGHTS</b></h4>
+                <div class="img_bulb"></div>
+                  <h4><b>IOT</b></h4>
                 </div>
             </div>
 
             <div class="card">
-                <img src="img_avatar.png" alt="Avatar" style="width:10%">
+                <div class="img_stats"></div>
                 <div class="container">
-                  <h4><b>BLINDS</b></h4>
+                  <h4><b>STATS</b></h4>
                 </div>
             </div>
 
