@@ -1,10 +1,26 @@
 body {
     background-color: black;
-    margin: 1.5em;
+    margin: 2.5em;
     font-family: 'Poppin', sans-serif;
 
     section.hero{
         color: #3abcf8;
+        position: relative;
+        text-align: center;
+        h1 {
+            visibility: collapse;
+        }
+        
+        img{
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5em;
+            &:hover{
+                width: 90px;
+                height: 90px;
+                transition: 0.3s;
+            }
+        }
     }
 }
 
@@ -51,7 +67,6 @@ nav {
 header {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(24, 24, 65);
 
     svg{
         width: 3em;
@@ -61,20 +76,7 @@ header {
 
 footer{
     background-color: rgb(24, 24, 65);
-}
-
-.hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: url(images/iot_house3.jpg);
-    background-size: 300px;
-    background-repeat: no-repeat;
-    background-position-x: 80%;
-    background-position-y: 50%;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
+    display: none;
 }
 
 .logo {
@@ -87,14 +89,72 @@ footer{
     body {
         margin: 1.5em 5em;
         font-family: 'Poppin', sans-serif;
+        h1 {
+            visibility: visible;
+        }
+
+        section.hero{
+            text-align: left;
+        }
+
+        img{
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5em;
+            margin-left: 3em;
+            &:hover{
+                width: 90px;
+                height: 90px;
+                transition: 0.3s;
+            }
+        }
+        
     }
     
+    .hero-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url(images/iot_house3.jpg);
+        background-size: 300px;
+        background-repeat: no-repeat;
+        background-position-x: 80%;
+        background-position-y: 50%;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+    }
+
+
 }
 
 @media only screen and (min-width: 920px) {
 
     .hamburger{
         display: none;
+    }
+
+    nav {
+        transform: translate(0);
+        position: unset;
+        display: block;
+        width: auto;
+        height: auto;
+        background: none;
+    }
+
+    .hero-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url(images/iot_house3.jpg);
+        background-size: 300px;
+        background-repeat: no-repeat;
+        background-position-x: 80%;
+        background-position-y: 50%;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
     }
     
 }
