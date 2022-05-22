@@ -36,7 +36,8 @@ nav {
   position: fixed;
   right: 0;
   top: 0;
-  background: white;
+  background: #2d2d49;
+  opacity: 90%;
   height: 100vh;
   width: 50%;
   z-index: 999;
@@ -56,14 +57,14 @@ nav ul {
 }
 
 nav ul a {
-  color: black;
+  color: #3abcf8;
   padding: .75em 2em;
   display: block;
   width: 100%;
 }
 
 nav ul a:hover {
-  background-color: #ebebeb;
+  background-color: black;
 }
 
 nav .close {
@@ -86,14 +87,14 @@ header svg {
   margin-top: -0.6em;
 }
 
-footer {
-  background-color: #181841;
-  display: none;
-}
-
 .logo {
   color: #3abcf8;
   font-weight: bold;
+}
+
+.open-nav {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 @media only screen and (min-width: 680px) {
@@ -135,27 +136,86 @@ footer {
 }
 
 @media only screen and (min-width: 920px) {
-  .hamburger {
+  .menu {
     display: none;
   }
+  body {
+    padding-top: 2em;
+  }
+  body section.hero {
+    color: #3abcf8;
+    position: relative;
+    text-align: left;
+  }
+  body section.hero h1 {
+    visibility: collapse;
+  }
+  body section.hero img {
+    width: 120px;
+    height: 120px;
+    margin-top: 8em;
+  }
+  body section.hero img:hover {
+    width: 140px;
+    height: 140px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .cards {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  .cards img {
+    height: 200px;
+    width: 200px;
+  }
   nav {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-    position: unset;
+    position: right;
+    right: 215px;
+    top: 0;
+    background: black;
+    opacity: 100%;
+    height: 1vh;
+    width: 20%;
+    z-index: 999;
+    text-transform: uppercase;
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  }
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 2em;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  nav ul a {
+    color: #3abcf8;
+    padding: 1em;
     display: block;
-    width: auto;
-    height: auto;
-    background: none;
+    width: 55%;
+  }
+  nav ul a:hover {
+    background-color: #2d2d49;
+  }
+  nav .close {
+    display: none;
   }
   .hero-img {
     position: absolute;
     top: 0;
     left: 0;
     background: url(images/iot_house3.jpg);
-    background-size: 300px;
+    background-size: 400px;
     background-repeat: no-repeat;
     background-position-x: 80%;
-    background-position-y: 50%;
+    background-position-y: 58%;
     width: 100%;
     height: 100vh;
     z-index: -1;
