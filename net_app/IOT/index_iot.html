@@ -11,7 +11,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="style_iot.css">
-        
+        <script src="https://unpkg.com/vue@3.2.20/dist/vue.global.prod.js"></script>
+        <script src="https://unpkg.com/@radial-color-picker/vue-color-picker/dist/vue-color-picker.umd.min.js"></script>
+        <link href="https://unpkg.com/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.css" rel="stylesheet">
+    
     </head>
 
     <body>
@@ -50,6 +53,13 @@
 
         </header>
 
+        <div id="app">
+            <color-picker v-bind="color" @input="onInput"></color-picker>
+        </div>
+
+        <section>
+        </section>
+
         <script>
             //SLIDER
             // var slider = document.getElementById("myRange");
@@ -73,9 +83,28 @@
                 nav.classList.remove('open-nav')
             })
             
-            // close.addEventListener('click', () => {
-            //     nav.classList.remove('open-nav')
-            // })
+            // Color-picker
+            var ColorPicker = window.VueColorPicker;
+            Vue.createApp({
+                components: {
+                    ColorPicker: ColorPicker,
+                },
+                setup() {
+                    const color = Vue.reactive({
+                        hue: 50,
+                        saturation: 100,
+                        luminosity: 50,
+                        alpha: 1,
+                    });
+
+                    return {
+                        color,
+                        onInput(hue) {
+                            color.hue = hue;
+                        },
+                    };
+                },
+            }).mount('#app');
 
         </script>
 
