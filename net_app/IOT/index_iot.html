@@ -6,12 +6,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
-        <title>Eldaregatan 2c, The church of doom!</title>
+        <title>Eldaregatan 2c, Let there be light!!</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" type="text/css" href="style.css">
-        
+        <link rel="stylesheet" type="text/css" href="style_iot.css">
+        <script src="https://unpkg.com/vue@3.2.20/dist/vue.global.prod.js"></script>
+        <script src="https://unpkg.com/@radial-color-picker/vue-color-picker/dist/vue-color-picker.umd.min.js"></script>
+        <link href="https://unpkg.com/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.css" rel="stylesheet">
+    
     </head>
 
     <body>
@@ -50,49 +53,28 @@
 
         </header>
 
-        <div class="hero-img"></div>
+        <div id="app">
+            <color-picker v-bind="color" @input="onInput"></color-picker>
+        </div>
 
-        <section class="hero">    
-            <h1>Welcome!</h1>
-
-            <div class="cards">
-
-                <div class="first-row">
-                    <div class="card">
-                        <img src="images/weather-button.png" alt="Image of a sun" href="#">
-                    </div>
-
-                    <div class="card">
-                        <img src="images/iot-button.png" alt="image of a light-bulb" href="#"> 
-                    </div>
-                </div>
-
-                <div class="seconed-row">
-                    <div class="card">
-                        <img src="images/stats.png" alt="image of a chart"  href="#">
-                    </div>
-
-                    <div class="card">
-                        <img src="images/spotify.png" alt="icon spotify" href="www.spotify.com">
-                    </div>
-                </div>
-
-            </div>
+        <section>
         </section>
 
         <script>
+            //SLIDER
+            // var slider = document.getElementById("myRange");
+            // var output = document.getElementById("demo");
+            // output.innerHTML = slider.value; // Display the default slider value
+
+            // // Update the current slider value (each time you drag the slider handle)
+            // slider.oninput = function() {
+            //     output.innerHTML = this.value;
+            // } 
+
+            // MENU
             const menu = document.querySelector('.menu')
             const close = document.querySelector('.close')
             const nav = document.querySelector('nav')
-
-            function goPython(){
-                    $.ajax({
-                    url: "MYSCRIPT.py",
-                    context: document.body
-                    }).done(function() {
-                    alert('finished python script');;
-                    });
-                }
 
             menu.addEventListener('click', () => {
                 nav.classList.add('open-nav')
@@ -101,7 +83,31 @@
                 nav.classList.remove('open-nav')
             })
             
+            // Color-picker
+            var ColorPicker = window.VueColorPicker;
+            Vue.createApp({
+                components: {
+                    ColorPicker: ColorPicker,
+                },
+                setup() {
+                    const color = Vue.reactive({
+                        hue: 50,
+                        saturation: 100,
+                        luminosity: 50,
+                        alpha: 1,
+                    });
+
+                    return {
+                        color,
+                        onInput(hue) {
+                            color.hue = hue;
+                        },
+                    };
+                },
+            }).mount('#app');
+
         </script>
 
     </body>
+
 </html>
