@@ -5,13 +5,18 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        <title>Eldaregatan 2c, The church of doom!</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <title>Eldaregatan 2c, Let there be light!!</title>
+
+        <!--Font import-->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" type="text/css" href="style.css">
         
+        <!--Color picker imports-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>  <!-- 'classic' theme -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
+        <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+        
+        <!--CSS import-->
+        <link rel="stylesheet" type="text/css" href="../style/style.css">
     </head>
 
     <body>
@@ -38,7 +43,7 @@
                     <li><a href="#">Docs</a></li>
                 </ul>
             </nav>
-
+        <!--
             <svg class="menu" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 100 100">
                 <rect width="44" height="10" x="30" y="63" fill="#ff8405"/>
                 <rect width="44" height="10" x="30" y="31" fill="#ff8405"/>
@@ -47,40 +52,40 @@
                 <polygon fill="#4343bf" points="74,25 74,41 30,41 30,47 74,47 74,57 30,57 30,63 74,63 74,73 30,73 30,79 80,79 80,25"/>
                 <polygon fill="#3abcf8" points="74,21 20,21 20,76 30,76 30,31 74,31"/>
             </svg>
+        -->
 
         </header>
 
-        <div class="hero-img"></div>
-
-        <section class="hero">    
-            <h1>Welcome!</h1>
-
-            <div class="cards">
-
-                <div class="first-row">
-                    <div class="card">
-                        <img src="images/weather-button.png" alt="Image of a sun" href="#">
-                    </div>
-
-                    <div class="card">
-                        <img src="images/iot-button.png" alt="image of a light-bulb" href="#"> 
-                    </div>
-                </div>
-
-                <div class="seconed-row">
-                    <div class="card">
-                        <img src="images/stats.png" alt="image of a chart"  href="#">
-                    </div>
-
-                    <div class="card">
-                        <img src="images/spotify.png" alt="icon spotify" href="www.spotify.com">
-                    </div>
-                </div>
-
+        <section class="first">
+            <div id="drop-down">
+                
             </div>
         </section>
 
-        <script src="netApp.js"></script>
+        <section class="seconed">
+            <div class="color-picker" style="z-index:2"></div>
+            
+            <p id="selectedColor" style="color:#3abcf8">select color</p>
+            
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <p>Value: <span id="demo"></span></p>
+              </div>
+              
+            <script>
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+            
+            slider.oninput = function() {
+            output.innerHTML = this.value;
+            }
+            </script>
+        
+        </section>
+
+        <script src="../java/IOT.js"></script>
 
     </body>
+
 </html>

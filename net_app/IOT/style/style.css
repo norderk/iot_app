@@ -1,26 +1,21 @@
 body {
   background-color: black;
+  color: #3abcf8;
   margin: 2.5em;
   font-family: 'Poppin', sans-serif;
 }
 
-body section.hero {
-  color: #3abcf8;
-  position: relative;
-  text-align: center;
-}
-
-body section.hero h1 {
+body h1 {
   visibility: collapse;
 }
 
-body section.hero img {
+body img {
   width: 80px;
   height: 80px;
   margin-bottom: 1.5em;
 }
 
-body section.hero img:hover {
+body img:hover {
   width: 90px;
   height: 90px;
   -webkit-transition: 0.3s;
@@ -100,4 +95,21 @@ header svg {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
 }
-/*# sourceMappingURL=style_iot.css.map */
+
+.seconed {
+  padding-top: 2em;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 2;
+}
+
+.seconed .slider {
+  padding-top: 0em;
+}
+
+#selectedColor {
+  margin-top: 16em;
+}
+/*# sourceMappingURL=style.css.map */
