@@ -6,9 +6,10 @@
     <script src="https://unpkg.com/@radial-color-picker/vue-color-picker/dist/vue-color-picker.umd.min.js"></script>
     <link href="https://unpkg.com/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:black">
     <div id="app">
         <color-picker v-bind="color" @input="onInput"></color-picker>
+        <p id="selectedColor" style="color:blue">select color</p>
     </div>
 
     <script>
@@ -30,9 +31,13 @@
                     color,
                     onInput(hue) {
                         color.hue = hue;
+                        document.getElementById("selectedColor").innerText = hue;
                     },
+                    // onColorSelect(hue) {
+                    //     document.getElementById("selectedColor").innerText = hue;
+                    // }  
                 };
-            },
+            }, 
         }).mount('#app');
     </script>
 </body>
