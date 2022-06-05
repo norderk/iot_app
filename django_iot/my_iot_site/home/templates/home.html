@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="first-row">
+
+    <div class="card">
+        <img src="{% static 'images/weather-button.png' %}" alt="image used for weather button">
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/iot-button.png' %}" alt="image used for iot">
+    </div>
+
+</div>
+
+<div class="seconed-row">
+
+    <div class="card">
+        <img src="{% static 'images/stats.png' %}" alt="image used for stats">
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/spotify.png' %}" alt="icon spotify" href="www.spotify.com">
+    </div>
+
+</div>
+{% endblock %}
