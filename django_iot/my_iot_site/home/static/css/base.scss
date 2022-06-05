@@ -10,8 +10,10 @@ body {
         h1 {
             visibility: collapse;
         }
-        
-        img{
+        margin-top: 1.2em;
+
+        }
+        input{
             width: 80px;
             height: 80px;
             margin-bottom: 1.5em;
@@ -21,12 +23,17 @@ body {
                 transition: 0.3s;
             }
         }
-    }
 }
 
+// removes underline from "IOTStartPage"
 a {
     text-decoration: none;
     font-size: 1.3rem;
+}
+
+//curser on hover
+.menu{
+    cursor: pointer; 
 }
 
 nav {
@@ -62,6 +69,7 @@ nav {
         float: right;
         margin: 1em;
         width: 2.5em;
+        cursor: pointer;
     }
 }
 
@@ -81,53 +89,41 @@ header {
     span{
         color: #4343bf;
     }
+    margin-top: 0.5em;
 }
 
 .open-nav {
     transform: translateX(0%);
 }
 
-@media only screen and (min-width: 680px) {
 
-    body {
-        margin: 1.5em 5em;
-        font-family: 'Poppin', sans-serif;
-        h1 {
-            visibility: visible;
-        }
+// @media only screen and (min-width: 680px) {
 
-        section.hero{
-            text-align: left;
-        }
+//     body {
+//         margin: 1.5em 5em;
+//         font-family: 'Poppin', sans-serif;
+//         h1 {
+//             visibility: visible;
+//         }
 
-        img{
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1.5em;
-            margin-left: 3em;
-            &:hover{
-                width: 90px;
-                height: 90px;
-                transition: 0.3s;
-            }
-        }
-        
-    }
-    
-    .hero-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: url(images/iot_house3.jpg);
-        background-size: 300px;
-        background-repeat: no-repeat;
-        background-position-x: 80%;
-        background-position-y: 50%;
-        width: 100%;
-        height: 100vh;
-        z-index: -1;
-    }
-}
+//         section.hero{
+//             text-align: left;
+//         }
+
+//         input{
+//             width: 80px;
+//             height: 80px;
+//             margin-bottom: 1.5em;
+//             margin-left: 3em;
+//             &:hover{
+//                 width: 90px;
+//                 height: 90px;
+//                 transition: 0.3s;
+//             }
+//         }
+//     }
+// }
+
 
 @media only screen and (min-width: 920px) {
 
@@ -136,7 +132,7 @@ header {
     }
 
     body{
-        padding-top: 2em;
+
         section.hero{
             color: #3abcf8;
             position: relative;
@@ -144,8 +140,8 @@ header {
             h1 {
                 visibility: collapse;
             }
-            
-            img{
+        
+            input{
                 width: 140px;
                 height: 140px;
                 &:hover{
@@ -156,14 +152,14 @@ header {
             }
         }
     }
+
     .cards{
         display: inline-flex;
-        margin-top: 4em;
-        margin-left: 2em;
-        img{
-            height: 200px;
-            width: 200px;
-        }
+        margin-top: 2em;
+    }
+
+    .card{
+        margin: 2.5em;
     }
 
     .logo{
@@ -173,7 +169,6 @@ header {
     nav {
         position: right;
         right: 215px;
-        top: 0;
         background: black;
         opacity: 100%;
         height: 1vh;
@@ -182,13 +177,13 @@ header {
         text-transform: uppercase;
         transform: translateX(0%);
         transition: transform 0.5s ease-in-out;
-    
+
         ul{
             list-style-type: none;
             padding: 0;
-            margin-top: 3em;
+            margin-top: 2.5em;
             display: inline-flex;
-            
+
             a{
                 color: #3abcf8;
                 display: block;
@@ -198,7 +193,7 @@ header {
                 }
             }
         }
-    
+
         .close{
             display: none;
         }
