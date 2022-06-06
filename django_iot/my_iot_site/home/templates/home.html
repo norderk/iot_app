@@ -5,11 +5,22 @@
 <div class="first-row">
 
     <div class="card">
-        <input class="card_input" type="image" src="{% static 'images/weather-button.png' %}" alt="image used for weather button">
+        <input
+            type="image"
+            src="{% static 'images/weather-button.png' %}"
+            alt="image used for weather button"
+            href="#"
+        >
     </div>
 
     <div class="card">
-        <img src="{% static 'images/iot-button.png' %}" alt="image used for iot">
+        <input
+            class="iot-button-card"
+            onclick="getIot()"
+            type="image"
+            src="{% static 'images/iot-button.png' %}"
+            alt="image used for iot"
+        >
     </div>
 
 </div>
@@ -17,12 +28,23 @@
 <div class="seconed-row">
 
     <div class="card">
-        <img src="{% static 'images/stats.png' %}" alt="image used for stats">
+        <input
+            type="image"
+            src="{% static 'images/stats.png' %}"
+            alt="image used for stats"
+            hrwf="#"
+        >
     </div>
 
     <div class="card">
-        <img src="{% static 'images/spotify.png' %}" alt="icon spotify" href="www.spotify.com">
+        <input
+            type="image"
+            src="{% static 'images/spotify.png' %}"
+            alt="icon spotify"
+            href="#">
     </div>
-
+    {% block imgButton %}
+        <script src="{% static '/java/imgButton.js' %}"></script>
+    {% endblock %}
 </div>
 {% endblock %}

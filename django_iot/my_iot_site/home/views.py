@@ -7,6 +7,8 @@ def home_view(request):
 
 
 def iot_view(request):
+    print("OBS! iot was requested!")
+    print(request)
     return render(request, "iot.html", {})
 
 
