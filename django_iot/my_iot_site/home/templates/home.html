@@ -6,6 +6,7 @@
 
     <div class="card">
         <input
+            onclick="getPage('weather')"
             type="image"
             src="{% static 'images/weather-button.png' %}"
             alt="image used for weather button"
@@ -15,8 +16,7 @@
 
     <div class="card">
         <input
-            class="iot-button-card"
-            onclick="getIot()"
+            onclick="getPage('iot')"
             type="image"
             src="{% static 'images/iot-button.png' %}"
             alt="image used for iot"
@@ -29,6 +29,7 @@
 
     <div class="card">
         <input
+            onclick="getPage('stats')"
             type="image"
             src="{% static 'images/stats.png' %}"
             alt="image used for stats"
@@ -38,6 +39,7 @@
 
     <div class="card">
         <input
+            onclick="getPage('spotify')"
             type="image"
             src="{% static 'images/spotify.png' %}"
             alt="icon spotify"
