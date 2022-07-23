@@ -1,9 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--<script src="{% static '/java/executePython.js' %}"></script>-->
+
     <div>
         <h1 style="color:aliceblue">IOT</h1>
-        <button onclick="on_off('on')">on</button>
-        <button onclick="on_off('off')">off</button>
+        <form method="post">{% csrf_token %}
+        <button onclick="call_mqtt()">on</button>
+        <button onclick="submitHandler('off')">off</button>
     </div>
+
+    <script>
+        function call_mqtt() {
+            $.ajax({
+                url: "{% url 'call_mqtt/' %}",
+                type: "post", //send it through get method
+                data: { 
+                    topic: "living_room", 
+                    payload: "ON",
+                },
+                success: function(response) {
+                    console.log('Success!!!!')
+                    console.log(response)
+                },
+                error: function(xhr, url) {
+                    //console.log('Fail!!!!')
+                    //consol.log("called with", url)
+                    console.log(alert(JSON.stringify(xhr)));
+                }
+            });
+        }
+    </script>
+
 {% endblock %}
