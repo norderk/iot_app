@@ -7,31 +7,28 @@
 
     <div>
         <h1 style="color:aliceblue">IOT</h1>
-        <form method="post">{% csrf_token %}
-        <button onclick="call_mqtt()">on</button>
-        <button onclick="submitHandler('off')">off</button>
+        <!-- <form action="/simple_function"> -->
+        <button id="button_on">ON</button>
+        <button id="button_off">OFF</button>
+        <button id="slug">slug</button>
+        <!-- </form> -->
+        <!-- <form method="post">{% csrf_token %} -->
+        <!-- <button onclick="call_mqtt()">on</button>
+        <button onclick="submitHandler('off')">off</button> -->
     </div>
-
     <script>
-        function call_mqtt() {
-            $.ajax({
-                url: "{% url 'call_mqtt/' %}",
-                type: "post", //send it through get method
-                data: { 
-                    topic: "living_room", 
-                    payload: "ON",
-                },
-                success: function(response) {
-                    console.log('Success!!!!')
-                    console.log(response)
-                },
-                error: function(xhr, url) {
-                    //console.log('Fail!!!!')
-                    //consol.log("called with", url)
-                    console.log(alert(JSON.stringify(xhr)));
-                }
-            });
-        }
+        var button = document.getElementById('button_on');
+            button.onclick = function() {
+            window.location.assign('/simple_function_on');
+            }
+        var button = document.getElementById('button_off');
+            button.onclick = function() {
+            window.location.assign('/simple_function');
+            }
+        var button = document.getElementById('slug');
+            button.onclick = function() {
+            window.location.assign('/test_slug/drama');
+            }
     </script>
 
 {% endblock %}
