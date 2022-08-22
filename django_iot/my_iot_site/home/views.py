@@ -20,7 +20,7 @@ def on_connect(client, userdata, flags, rc):
     
     if rc == 0:
         print("Connected - OK\n")
-        client.subscribe("zigbee2mqtt/living_room")
+        client.subscribe("zigbee2mqtt/living_room_ceiling")
     else:
         print("Failed to connect to MQTT broker, return code ", rc)
         print("\n")       
@@ -71,14 +71,14 @@ def iot_view(request, *args, **kwargs):
 
 def simple_function(request):
     print('THIS is a request:', request)
-    topic = "zigbee2mqtt/living_room/set"
+    topic = "zigbee2mqtt/living_room_ceiling/set"
     payload = 'OFF'
     call_mqtt(topic=topic, payload=payload)
     return render(request, "iot.html", {}) # this could also return iot base page!
 
 def simple_function_on(request):
     print('THIS is a request:', request)
-    topic = "zigbee2mqtt/living_room/set"
+    topic = "zigbee2mqtt/living_room_ceiling/set"
     payload = 'ON'
     call_mqtt(topic=topic, payload=payload)
     return render(request, "iot.html", {})
