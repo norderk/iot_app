@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="first-row">
+
+    <div class="card">
+        <input
+            onclick="getPage('weather')"
+            type="image"
+            src="{% static 'images/weather-button.png' %}"
+            alt="image used for weather button"
+            href="#"
+        >
+    </div>
+
+    <div class="card">
+        <input
+            onclick="getPage('iot')"
+            type="image"
+            src="{% static 'images/iot-button.png' %}"
+            alt="image used for iot"
+        >
+    </div>
+
+</div>
+
+<div class="seconed-row">
+
+    <div class="card">
+        <input
+            onclick="getPage('stats')"
+            type="image"
+            src="{% static 'images/stats.png' %}"
+            alt="image used for stats"
+            hrwf="#"
+        >
+    </div>
+
+    <div class="card">
+        <input
+            onclick="getPage('spotify')"
+            type="image"
+            src="{% static 'images/spotify.png' %}"
+            alt="icon spotify"
+            href="#">
+    </div>
+    {% block imgButton %}
+        <script src="{% static '/java/imgButton.js' %}"></script>
+    {% endblock %}
+</div>
+{% endblock %}

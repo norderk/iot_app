@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +11,15 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
 
     </head>
 
     <body>
 
         <header class="navbar">
-            <a href="#" class="logo"><span>IOT</span>StartPage</a>
+            <!--TODO: Figur out what style is over riding the cursor:ponter in the css file.. -->
+            <a onclick="getPage('')" class="logo" style="cursor:pointer;"><span>IOT</span>StartPage</a>
 
             <nav>
                 <svg class="close" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -33,7 +35,8 @@
                 </svg>
 
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <!--TODO: Figur out what style is over riding the cursor:ponter in the css file.. -->
+                    <li><a onclick="getPage('home')" style="cursor:pointer;">Home</a></li>
                     <li><a href="#">User</a></li>
                     <li><a href="#">Docs</a></li>
                 </ul>
@@ -50,36 +53,20 @@
 
         </header>
 
-        <div class="hero-img"></div>
-
         <section class="hero">
-
             <div class="cards">
-
-                <div class="first-row">
-                    <div class="card">
-                        <input type="image" src="images/weather-button.png" alt="Image of a sun" href="#">
-                    </div>
-
-                    <div class="card">
-                        <input type="image" src="images/iot-button.png" alt="image of a light-bulb" href="#"> 
-                    </div>
-                </div>
-
-                <div class="seconed-row">
-                    <div class="card">
-                        <input type="image" src="images/stats.png" alt="image of a chart"  href="#">
-                    </div>
-
-                    <div class="card">
-                        <input type="image" src="images/spotify.png" alt="icon spotify" href="www.spotify.com">
-                    </div>
-                </div>
-
+                {% block content %}
+                {% endblock %}
             </div>
         </section>
+    
+        {% block netApp %}
+            <script src="{% static '/java/netApp.js' %}"></script>
+        {% endblock %}
 
-        <script src="netApp.js"></script>
+        {% block imgButton %}
+            <script src="{% static '/java/imgButton.js' %}"></script>
+        {% endblock %}
 
     </body>
 </html>

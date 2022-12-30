@@ -94,6 +94,7 @@ header svg {
 }
 
 .logo {
+  cursor: pointer;
   color: #3abcf8;
   font-weight: bold;
   margin-top: 0.5em;
@@ -182,4 +183,4 @@ header svg {
     display: none;
   }
 }
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=base.css.map */
