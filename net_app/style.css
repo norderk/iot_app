@@ -8,20 +8,19 @@ body section.hero {
   color: #3abcf8;
   position: relative;
   text-align: center;
-  margin-top: 1.2em;
 }
 
 body section.hero h1 {
   visibility: collapse;
 }
 
-body input {
+body section.hero img {
   width: 80px;
   height: 80px;
   margin-bottom: 1.5em;
 }
 
-body input:hover {
+body section.hero img:hover {
   width: 90px;
   height: 90px;
   -webkit-transition: 0.3s;
@@ -31,10 +30,6 @@ body input:hover {
 a {
   text-decoration: none;
   font-size: 1.3rem;
-}
-
-.menu {
-  cursor: pointer;
 }
 
 nav {
@@ -76,7 +71,6 @@ nav .close {
   float: right;
   margin: 1em;
   width: 2.5em;
-  cursor: pointer;
 }
 
 header {
@@ -96,7 +90,6 @@ header svg {
 .logo {
   color: #3abcf8;
   font-weight: bold;
-  margin-top: 0.5em;
 }
 
 .logo span {
@@ -108,9 +101,50 @@ header svg {
           transform: translateX(0%);
 }
 
+@media only screen and (min-width: 680px) {
+  body {
+    margin: 1.5em 5em;
+    font-family: 'Poppin', sans-serif;
+  }
+  body h1 {
+    visibility: visible;
+  }
+  body section.hero {
+    text-align: left;
+  }
+  body img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5em;
+    margin-left: 3em;
+  }
+  body img:hover {
+    width: 90px;
+    height: 90px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(images/iot_house3.jpg);
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: 50%;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+  }
+}
+
 @media only screen and (min-width: 920px) {
   .menu {
     display: none;
+  }
+  body {
+    padding-top: 2em;
   }
   body section.hero {
     color: #3abcf8;
@@ -120,11 +154,11 @@ header svg {
   body section.hero h1 {
     visibility: collapse;
   }
-  body section.hero input {
+  body section.hero img {
     width: 140px;
     height: 140px;
   }
-  body section.hero input:hover {
+  body section.hero img:hover {
     width: 160px;
     height: 160px;
     -webkit-transition: 0.3s;
@@ -134,10 +168,12 @@ header svg {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    margin-top: 2em;
+    margin-top: 4em;
+    margin-left: 2em;
   }
-  .card {
-    margin: 2.5em;
+  .cards img {
+    height: 200px;
+    width: 200px;
   }
   .logo {
     position: relative;
@@ -145,6 +181,7 @@ header svg {
   nav {
     position: right;
     right: 215px;
+    top: 0;
     background: black;
     opacity: 100%;
     height: 1vh;
@@ -161,7 +198,7 @@ header svg {
   nav ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 2.5em;
+    margin-top: 3em;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
