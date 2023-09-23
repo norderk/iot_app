@@ -83,6 +83,13 @@ def simple_function_on(request):
     call_mqtt(topic=topic, payload=payload)
     return render(request, "iot.html", {})
 
+def slider_function(request):
+    print('THIS is a request to slider:', request)
+    topic = "zigbee2mqtt/living_room_ceiling/set"
+    payload = "brightness"
+    call_mqtt(topic=topic, payload=payload)
+    return render(request, "iot.html", {})
+
 def test_slug(request, slug):
     print('THIS is a request:', request)
     print('This is parameters:', slug)

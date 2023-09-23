@@ -25,3 +25,7 @@ Setup a remote server
 As always we start by standing on the shoulders of others! Or why invent the wheel! <br>
 Here is a tutorial for getting started with Eclipse Mosquitto and Zigbee2mqtt with the help of Docker and docker-compose: https://github.com/docker/docker-install 
 #### USAGE
+
+
+#### General
+This might be clear after som thought but this is a noob question which i struggled with.. How to make calls from the webbrowser using Django and without using url routing and view update. The simple answer is that this is not posible. Django is it self executed on the backend and all communication from the  browser is therefore executed in the browser-client.. So how to to this.. well we need to use javascript and ajax OR just be fine with using django url-routing and view update.

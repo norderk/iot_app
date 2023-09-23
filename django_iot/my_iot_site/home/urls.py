@@ -10,6 +10,7 @@ urlpatterns = [
     path('stats/', views.stats_view, name="stats"),
     path('simple_function/', views.simple_function, name='simple_function'),
     path('simple_function_on/', views.simple_function_on, name='simple_function_on'),
+    path('slider_function/', views.slider_function, name='slider_function'),
     path('test_slug/<slug:slug>/', views.test_slug),
 
     # routing pure function calls
