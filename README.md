@@ -1,6 +1,10 @@
 #### ABOUT THE PROJECT
 This project uses several different buildingblocks with a singe purpose, home automation. On a base level there is a raspberrypie running a docker container with a zigbee2mqtt client. This client relays commands wia an antenna(radio) allowing the user to control different endpoints. The user interface is a web application built in Django. In an effort to make the application asyncrones and to handle input from multiple sources the messegebroker RabbitMQ is used together with Celery(integrated with django). My aim is to make this an open source project I would love for others to copy share and use the code base.
 
+#### FLOWCHART
+
+
+![flowchart](app.drawio.svg)
 
 #### BUILT WITH
 
