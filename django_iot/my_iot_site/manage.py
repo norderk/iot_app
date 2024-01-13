@@ -2,14 +2,20 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-sys.path.append('/home/norken/gitrepos/iot_app/django_iot')
+
+sys.path.append("/home/norken/gitrepos/iot_app/django_iot")
 
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_iot_site.settings")
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE",
+        "my_iot_site.settings",
+    )
     try:
-        from django.core.management import execute_from_command_line
+        from django.core.management import (  # pylint: disable=C0415
+            execute_from_command_line,
+        )
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "

@@ -6,6 +6,45 @@ on:  # yamllint disable-line rule:truthy
   pull_request: null
 
 jobs:
+  # run-system-tests:
+  #   runs-on: ubuntu-latest
+  #   name: System tests
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: Install dependencies
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  #     - name: Launch dashboard
+  #       run: docker compose -f qualitytrace/compose.cg.yaml up -d
+  #       shell: bash
+  #     - name: Build the behave test image
+  #       run: docker build -t run_behave -f Dockerfile-behave .
+  #       shell: bash
+  #     - name: Run Systemtests
+  #       run: docker run -e MONGODB_ADDRESS=127.0.0.1:27017 --network=host run_behave
+  #       shell: bash
+  #     - name: check dash-logs
+  #       run: docker logs dashboard
+  #       shell: bash
+  # unittests:
+  #   runs-on: ubuntu-latest
+  #   name: Dashboard unit tests
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: Install dependencies
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         pip install -r requirements.txt
+  #     - name: Run Unittests
+  #       run: |
+  #         cd qualitytrace/dashboard/
+  #         coverage run --rcfile=.coveragerc --branch -m pytest tests/unit --verbose
+  #         coverage report -m --fail-under=36 --data-file=.coverage
+  #       shell: bash
+
   build:
     name: Lint
     runs-on: ubuntu-latest
@@ -29,7 +68,9 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           # To report GitHub Actions status checks
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILTER_REGEX_EXCLUDE: '.*\.(scss)$'
+          VALIDATE_ALL_CODEBASE: false
           VALIDATE_BASH: true
           VALIDATE_CSS: true
           VALIDATE_ENV: true
