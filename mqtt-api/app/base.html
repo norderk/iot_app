@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test-page-http_to_mqtt</title>
+    <script type="text/javascript" src="../static/hidden.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+</head>
+<body>
+    <div>
+        <h>This is a title</h>
+    </div> 
+    
+    <div>
+        <a>Kitchen Window</a>
+        <button type="button" id="on" onclick="getOnOff(zone='kitchen_window', payload='ON')">ON</button>
+        <button type="button" id="on" onclick="getOnOff(zone='kitchen_window', payload='OFF')">OFF</button>
+        <input type="range" min="0" max="254" step=1 id="slider_kitchen" />
+    </div>
+    <!--TESTING GROUPS-->
+    <div>
+        <a>Kitchen</a>
+        <button type="button" id="on" onclick="getOnOff(zone='kitchen_light', payload='ON')">ON</button>
+        <button type="button" id="on" onclick="getOnOff(zone='kitchen_light', payload='OFF')">OFF</button>
+    </div>
+    
+    <div>
+        <a>Living Room  </a>
+        <button type="button" id="on" onclick="getOnOff(zone='living_room_lights', payload='ON')">ON</button>
+        <button type="button" id="on" onclick="getOnOff(zone='living_room_lights', payload='OFF')">OFF</button>
+        <input type="range" min="0" max="254" step=0.5 id="slider_living" />
+    </div>
+    
+    <div id="picker"></div>
+
+</body>
+<script>
+    // SCRIPT FOR BUTTONS
+    async function getOnOff(zone, payload) {
+        const endpoint = new URL(`http://0.0.0.0:80/zigbee/?topic=zigbee2mqtt/${zone}/set&payload=${payload}`);
+        const response = await fetch(endpoint)
+    }
+
+    // SCRIPT FOR SLIDER
+    var slider = document.getElementById('slider_kitchen');
+    slider.addEventListener('input', function() {sliderOut(this.value)}); //change or input(laggs)
+    
+    async function sliderOut(slide_value) {
+        let payload = 'brightness'
+        const endpoint = new URL(`http://0.0.0.0:80/zigbee/?topic=zigbee2mqtt/kitchen_window/set&payload={"${payload}":${slide_value}}`);
+        console.log(endpoint)
+        const response = await fetch(endpoint)
+    }
+
+    /*
+    var slider = document.getElementById('slider_living');
+    slider.addEventListener('input', function() {sliderOut(this.value)}); //change or input(laggs)
+    
+    async function sliderOut(slide_value) {
+        let payload = 'brightness'
+        const endpoint = new URL(`http://0.0.0.0:80/zigbee/?topic=zigbee2mqtt/living_room_ceiling/set&payload={"${payload}":${slide_value}}`);
+        console.log(endpoint)
+        const response = await fetch(endpoint)
+    }
+    */
+    
+    // CALL FASTAPI CLIENT WIHT RGB-update
+    // Called colorPicker.on
+    async function updateColor(zone, payload) {
+        const endpoint = new URL(`http://0.0.0.0:80/zigbee/?topic=zigbee2mqtt/${zone}/set&payload=${payload}`);
+        const response = await fetch(endpoint)
+    }
+
+    // Creates the color picker
+    var colorPicker = new iro.ColorPicker("#picker", {
+        // Set the size of the color picker
+        width: 320,
+        // Set the initial color to pure red
+        color: "#f00"
+    });
+
+    // listen to a color picker's color:change event
+    colorPicker.on('color:change', function(color) {
+        // log the current color as a RGB string
+        console.log(color.rgbString);
+        // grep colors from string
+        rgb = color.rgbString.match(/\d+/g);
+        var r = rgb[0];
+        var g = rgb[1];
+        var b = rgb[2];
+        // create object and chage to string
+        var update_color = {"color": {"r":`${r}`, "g":`${g}`, "b":`${b}`}};
+        const myJSON = JSON.stringify(update_color); 
+        updateColor('kitchen_window', myJSON)
+    });
+
+</script>
+</html>
