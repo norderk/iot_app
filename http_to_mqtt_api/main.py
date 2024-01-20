@@ -1,8 +1,20 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from paho_client import call_mqtt
+"""
+This module sets up a FastAPI application to interact with MQTT for controlling
+Zigbee devices. It includes routes for checking the server status and sending
+commands to Zigbee devices via MQTT.
+"""
 
-# print(os.path.__path__)
+import logging.config
+import os
+
+from fastapi import Depends, FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from paho_client import MQTTClient
+
+logging.config.fileConfig("logging.conf")
+logger = logging.getLogger(__name__)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+logger.info("running module %s in %s", __name__, current_dir)
 
 app = FastAPI()
 
@@ -19,10 +31,22 @@ app.add_middleware(
 )
 
 
+def get_mqtt_client():
+    mqtt_client = MQTTClient()
+    mqtt_client.connect()
+    try:
+        yield mqtt_client
+    finally:
+        mqtt_client.disconnect()
+
+
 # App functions
 @app.get("/")
 def read_root():
-    # Call client()
+    """
+    Root endpoint to check server status.
+    Returns a simple JSON indicating the server is running.
+    """
     return {"Connection": "OK"}
 
 
@@ -33,12 +57,16 @@ def read_root():
 
 
 @app.get("/zigbee/")
-def call_zigbee(topic: str, payload: str):
-    print(f"Payload: {payload}")
-    print(f"topic: {topic}")
+def call_zigbee(topic: str, payload: str, mqtt_client: MQTTClient = Depends(get_mqtt_client)):
+    """
+    Endpoint to send MQTT commands to Zigbee devices.
 
-    call_mqtt(payload=payload, topic=topic)
+    Parameters:
+    - topic (str): MQTT topic to publish the message to.
+    - payload (str): Payload to send, typically device commands.
+
+    Returns a confirmation of the sent topic and payload.
+    """
+    logger.info("Payload: %s, Topic: %s", payload, topic)
+    mqtt_client.publish(payload=payload, topic=topic)
     return {"topic": topic, "payload": payload}
-
-    # topic = "zigbee2mqtt/living_room_ceiling/set"
-    # payload = 'ON'
