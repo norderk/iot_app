@@ -1,34 +1,18 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
     <!--<script src="{% static '/java/executePython.js' %}"></script>-->
+
+    <!-- Include the JavaScript file from the static directory -->
+    <script src="{% static 'java/buttons.js' %}"></script>
 
     <div>
         <h1 style="color:aliceblue">IOT</h1>
-        <!-- <form action="/simple_function"> -->
-        <button id="button_on">ON</button>
-        <button id="button_off">OFF</button>
-        <button id="slug">slug</button>
-        <!-- </form> -->
-        <!-- <form method="post">{% csrf_token %} -->
-        <!-- <button onclick="call_mqtt()">on</button>
-        <button onclick="submitHandler('off')">off</button> -->
+        <button type="button" id="on" onclick="getOnOff(zone='earth', payload='ON')">ON</button>
+        <button type="button" id="off" onclick="getOnOff(zone='earth', payload='OFF')">OFF</button>
     </div>
-    <script>
-        var button = document.getElementById('button_on');
-            button.onclick = function() {
-            window.location.assign('/simple_function_on');
-            }
-        var button = document.getElementById('button_off');
-            button.onclick = function() {
-            window.location.assign('/simple_function');
-            }
-        var button = document.getElementById('slug');
-            button.onclick = function() {
-            window.location.assign('/test_slug/drama');
-            }
-    </script>
 
 {% endblock %}
