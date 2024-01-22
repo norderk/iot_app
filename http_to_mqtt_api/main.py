@@ -6,6 +6,7 @@ commands to Zigbee devices via MQTT.
 
 import logging.config
 import os
+from contextlib import contextmanager
 
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,18 +21,22 @@ app = FastAPI()
 
 # Define what calls can get returns
 # https://fastapi.tiangolo.com/tutorial/cors/
-origins = ["http://localhost", "http://localhost:8000", "http://127.0.0.1:8000/", "*"]
+origins = [
+    "http://127.0.0.1:8000",  # Only allow requests from this origin
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=origins,  # allows requests from the specified origin
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # You might limit this to actual needed methods e.g., GET, POST
+    allow_headers=["*"],  # Adjust based on actual headers your client sends
 )
 
 
+@contextmanager
 def get_mqtt_client():
+    logger.warning("get_mqtt_client was called")
     mqtt_client = MQTTClient()
     mqtt_client.connect()
     try:

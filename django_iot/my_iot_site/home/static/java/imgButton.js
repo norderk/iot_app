@@ -1,7 +1,9 @@
-function getPage(page_name) {
-    if(page_name == '' | page_name == 'home'){
-        document.location.href="/";
-    } else {
-        location.replace(page_name)
-    }
+/* This update page layout? */
+// eslint-disable-next-line no-unused-vars
+function getPage (pageName) {
+  if (pageName === '' | pageName === 'home') {
+    document.location.href = '/'
+  } else {
+    location.replace(pageName)
+  }
 }
