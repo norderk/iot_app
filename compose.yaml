@@ -1,0 +1,27 @@
+version: '3.8' 
+services:
+  
+  django:
+    build:
+      context: ./django_iot
+      dockerfile: Dockerfile
+    image: django-app
+    container_name: django-app
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET: ${DJANGO_SECRET}
+      DJANGO_SETTINGS_MODULE: my_iot_site.settings
+      PYTHONPATH: :/app
+      
+    depends_on:
+      - fast_api
+
+  fast_api:
+    build:
+      context: ./http_to_mqtt_api
+      dockerfile: Dockerfile
+    image: fast-api
+    container_name: fast-api
+    ports:
+      - "80:80"

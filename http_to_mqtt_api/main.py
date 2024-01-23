@@ -23,6 +23,7 @@ app = FastAPI()
 # https://fastapi.tiangolo.com/tutorial/cors/
 origins = [
     "http://127.0.0.1:8000",  # Only allow requests from this origin
+    "*",
 ]
 
 app.add_middleware(

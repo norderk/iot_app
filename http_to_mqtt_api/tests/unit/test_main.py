@@ -34,7 +34,6 @@ class TestMain(unittest.TestCase):
 
     @mock.patch("main.get_mqtt_client")
     def test_call_zigbee(self, mock_mqtt_func):
-
         result = call_zigbee(
             topic="zigbee2mqtt/kitchen_window/", payload="ON", mqtt_client=mock_mqtt_func
         )
