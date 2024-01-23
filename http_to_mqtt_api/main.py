@@ -6,6 +6,7 @@ commands to Zigbee devices via MQTT.
 
 import logging.config
 import os
+from contextlib import contextmanager
 
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,7 +34,9 @@ app.add_middleware(
 )
 
 
+@contextmanager
 def get_mqtt_client():
+    logger.warning("get_mqtt_client was called")
     mqtt_client = MQTTClient()
     mqtt_client.connect()
     try:

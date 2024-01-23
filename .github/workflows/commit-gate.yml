@@ -28,22 +28,22 @@ jobs:
   #     - name: check dash-logs
   #       run: docker logs dashboard
   #       shell: bash
-  # unittests:
-  #   runs-on: ubuntu-latest
-  #   name: Dashboard unit tests
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Install dependencies
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #         pip install -r requirements.txt
-  #     - name: Run Unittests
-  #       run: |
-  #         cd qualitytrace/dashboard/
-  #         coverage run --rcfile=.coveragerc --branch -m pytest tests/unit --verbose
-  #         coverage report -m --fail-under=36 --data-file=.coverage
-  #       shell: bash
+  unittests:
+    runs-on: ubuntu-latest
+    name: Unit tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r http_to_mqtt_api/requirements.txt
+      - name: Run Unittests
+        run: |
+          cd http_to_mqtt_api
+          coverage run --rcfile=.coveragerc --branch -m pytest tests/unit --verbose
+          coverage report -m --fail-under=10 --data-file=.coverage
+        shell: bash
 
   build:
     name: Lint
