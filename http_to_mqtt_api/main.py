@@ -22,8 +22,10 @@ app = FastAPI()
 # Define what calls can get returns
 # https://fastapi.tiangolo.com/tutorial/cors/
 origins = [
-    "http://127.0.0.1:8000",  # Only allow requests from this origin
-    "*",
+    "http://localhost:8002", # access through docker network
+    "http://localhost",
+    "http://django_app:8002",
+    "http://django_app"
 ]
 
 app.add_middleware(
@@ -37,7 +39,6 @@ app.add_middleware(
 
 @contextmanager
 def get_mqtt_client():
-    logger.warning("get_mqtt_client was called")
     mqtt_client = MQTTClient()
     mqtt_client.connect()
     try:
@@ -73,6 +74,7 @@ def call_zigbee(topic: str, payload: str, mqtt_client: MQTTClient = Depends(get_
 
     Returns a confirmation of the sent topic and payload.
     """
-    logger.info("Payload: %s, Topic: %s", payload, topic)
-    mqtt_client.publish(payload=payload, topic=topic)
-    return {"topic": topic, "payload": payload}
+    with get_mqtt_client() as mqtt_client:
+        logger.info("Payload: %s, Topic: %s", payload, topic)
+        mqtt_client.publish(payload=payload, topic=topic)
+        return {"topic": topic, "payload": payload}
