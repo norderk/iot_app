@@ -1,3 +1,6 @@
 paho-mqtt
 fastapi
 uvicorn
+pytest
+coverage
+starlette

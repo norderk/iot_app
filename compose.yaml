@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  django:
+    build:
+      context: ./django_iot
+      dockerfile: Dockerfile
+    image: django-app
+    container_name: django-app
+    networks:
+      - iot-network
+    ports:
+      - "8002:8000"
+    environment:
+      DJANGO_SECRET: ${DJANGO_SECRET}
+      DJANGO_SETTINGS_MODULE: my_iot_site.settings
+      PYTHONPATH: /app
+    depends_on:
+      - fast_api
+
+  fast_api:
+    build:
+      context: ./http_to_mqtt_api
+      dockerfile: Dockerfile
+    image: fast-api
+    container_name: fast-api
+    networks:
+      - iot-network
+    ports:
+      - "8001:8000"
+    environment:
+      MQTT_BROKER_PORT: ${MQTT_BROKER_PORT}
+      MQTT_BROKER_HOST: ${MQTT_BROKER_HOST}
+
+networks:
+  iot-network:
