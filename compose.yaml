@@ -27,6 +27,9 @@ services:
       - iot-network
     ports:
       - "8001:8000"
+    environment:
+      MQTT_BROKER_PORT: ${MQTT_BROKER_PORT}
+      MQTT_BROKER_HOST: ${MQTT_BROKER_HOST}
 
 networks:
   iot-network:
